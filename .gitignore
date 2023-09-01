@@ -1,1 +1,6 @@
-target/*
+**/target/
+**/Cargo.lock
+.vscode/
+.idea/
+.rustup/
+.cargo/
