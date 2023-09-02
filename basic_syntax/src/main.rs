@@ -130,4 +130,13 @@ fn main() {
     shadowing();
 
     sum(10, 20);
+
+    let age: u8 = 17;
+    let underage_authorization: bool = true;
+
+    if age >= 18 || age >= 16 && underage_authorization {
+        println!("You are an adult.");
+    } else {
+        println!("You are happy.");
+    }
 }
