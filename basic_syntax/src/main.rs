@@ -152,6 +152,27 @@ fn ownership() {
     borrowing(&mut a_string);
 }
 
+fn pattern_matching() {
+    for i in 1..=20 {
+        println!(
+            "i = {}, {}",
+            i,
+            match i {
+                1 => "one",
+                2 => "two",
+                3 => "three",
+                4 => "four",
+                11..=14 => "eleven to fourteen",
+                x if x / 2 == 0 => "even",
+                x if x / 2 != 0 => "odd",
+                18 | 19 => "almost there",
+                20 => "twenty",
+                _ => "more than four",
+            }
+        );
+    }
+}
+
 fn main() {
     primitive_types();
 
@@ -194,4 +215,6 @@ fn main() {
     }
 
     ownership();
+
+    pattern_matching();
 }
