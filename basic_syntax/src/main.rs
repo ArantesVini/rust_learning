@@ -107,18 +107,7 @@ fn loops() {
     }
 }
 
-fn main() {
-    println!("CON = {}, size = {};", CON, std::mem::size_of_val(&CON));
-
-    println!("STA = {}, size = {};", STA, std::mem::size_of_val(&STA));
-
-    unsafe {
-        // Always try to avoid using unsafe block.
-        println!("UNSF = {}, size = {};", UNSF, std::mem::size_of_val(&UNSF));
-        UNSF = 30_000;
-        println!("UNSF = {}, size = {};", UNSF, std::mem::size_of_val(&UNSF));
-    }
-
+fn primitive_types() {
     // variable always have fixed addresses in memory.
     // and also immutable by default.
     let var: u8 = 255;
@@ -148,6 +137,34 @@ fn main() {
 
     let char: char = 'V';
     println!("char = {}, size = {};", char, std::mem::size_of_val(&char));
+}
+
+fn borrowing(string: &mut String) {
+    string.push_str(" is a Rustacean.");
+    println!("borrowed string = {}", string);
+}
+
+fn ownership() {
+    // String is a growable, heap-allocated data structure.
+    // After the variable goes out of scope, the memory will be freed.
+    let mut a_string = String::from("Vinicius");
+    println!("a_string = {}", a_string);
+    borrowing(&mut a_string);
+}
+
+fn main() {
+    primitive_types();
+
+    println!("CON = {}, size = {};", CON, std::mem::size_of_val(&CON));
+
+    println!("STA = {}, size = {};", STA, std::mem::size_of_val(&STA));
+
+    unsafe {
+        // Always try to avoid using unsafe block.
+        println!("UNSF = {}, size = {};", UNSF, std::mem::size_of_val(&UNSF));
+        UNSF = 30_000;
+        println!("UNSF = {}, size = {};", UNSF, std::mem::size_of_val(&UNSF));
+    }
 
     scope();
 
@@ -175,4 +192,6 @@ fn main() {
         "JavaScript" => println!("You are a JavaScripter."),
         _ => println!("You are a human."),
     }
+
+    ownership();
 }
