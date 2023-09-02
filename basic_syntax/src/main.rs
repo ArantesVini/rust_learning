@@ -73,6 +73,14 @@ fn shadowing() {
     );
 }
 
+fn sum(a: u32, b: u32) -> u32 {
+    let result = a + b;
+    println!("Sum: {} + {} = {}", a, b, result);
+    // In this case the result variable will be returned.
+    // This can be done by not using semicolon.
+    result
+}
+
 fn main() {
     println!("CON = {}, size = {};", CON, std::mem::size_of_val(&CON));
 
@@ -120,4 +128,6 @@ fn main() {
     more_scope();
 
     shadowing();
+
+    sum(10, 20);
 }
