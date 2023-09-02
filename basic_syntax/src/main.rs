@@ -81,6 +81,32 @@ fn sum(a: u32, b: u32) -> u32 {
     result
 }
 
+fn loops() {
+    let mut multiple: u16 = 10;
+    let mut counter: u16 = 0;
+
+    while counter < 10 {
+        counter += 1;
+        println!("{} x {} = {}", multiple, counter, multiple * counter);
+    }
+
+    counter = 0;
+    multiple = 20;
+
+    loop {
+        counter += 1;
+        println!("{} x {} = {}", multiple, counter, multiple * counter);
+        if counter >= 10 {
+            break;
+        }
+    }
+
+    multiple = 30;
+    for counter in 1..=10 {
+        println!("{} x {} = {}", multiple, counter, multiple * counter);
+    }
+}
+
 fn main() {
     println!("CON = {}, size = {};", CON, std::mem::size_of_val(&CON));
 
@@ -138,5 +164,15 @@ fn main() {
         println!("You are an adult.");
     } else {
         println!("You are happy.");
+    }
+
+    loops();
+
+    let language = "Rust";
+    match language {
+        "Rust" => println!("You are a Rustacean."),
+        "Python" => println!("You are a Pythonista."),
+        "JavaScript" => println!("You are a JavaScripter."),
+        _ => println!("You are a human."),
     }
 }
